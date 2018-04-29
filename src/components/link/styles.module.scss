@@ -1,0 +1,16 @@
+$link-light-color: green;
+$link-light-color-hover: red;
+
+a.light {
+  font-size: inherit;
+}
+a.light:link,
+a.light:visited {
+  color: $link-light-color;
+}
+a.light:focus,
+a.light:hover,
+a.light:active {
+  color: $link-light-color-hover;
+}
+

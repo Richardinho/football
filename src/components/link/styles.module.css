@@ -1,43 +1,11 @@
-
-a {
-  text-decoration: none;
-  font-size: 20px;
-}
-
-a:link {
-}
-
-a:visited {
-}
-
-a:focus {
-  border-bottom: 0.1em solid;
-}
-
-a:hover {
-  border-bottom: 0.1em solid;     
-}
-
-a:active {
-  color: #CDFEAA;
-}
+a.light {
+  font-size: inherit; }
 
 a.light:link,
 a.light:visited {
-  color: white;
-}
+  color: green; }
+
 a.light:focus,
 a.light:hover,
 a.light:active {
-  color: red;
-}
-
-a.dark:link,
-a.dark:visited {
-  color: black;
-}
-a.dark:focus,
-a.dark:hover,
-a.dark:active {
-  color: green;
-}
+  color: red; }
