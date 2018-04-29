@@ -2,11 +2,15 @@ import React, { Component } from 'react';
 import styles from './App.module.css';
 import Link from './components/link/Link';
 import Button from './components/button/Button';
+import Header from './components/header/Header';
+import TeamPanel from './components/teams/TeamPanel';
 
 class App extends Component {
   render() {
     return (
       <div>
+        <Header/>
+        <TeamPanel/>
         <div className={styles.App}>
           <h6>header 6</h6>
           <h5>header 5</h5>
@@ -14,7 +18,6 @@ class App extends Component {
           <h3>header 3</h3>
           <h2>header 2</h2>
           <h1>header 1</h1>
-
           <ul className={styles.buttonList}>
             <li style={{ fontSize: '14px' }}>
               <Link type="light" text="hello world, bling"/>
