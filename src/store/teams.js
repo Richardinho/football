@@ -9,7 +9,7 @@ const teamsReducer =  (state = ['aberdeen', 'celtic'], action) => {
     case FETCH_TEAMS:
       return state;
     case FULFILLED:
-      return action.teams;
+      return action.response.results;
     default:
       return state;
   }
@@ -25,7 +25,7 @@ const fetchTeamsAction = (criteria) => {
 const fetchTeamsFulfilledAction = (response) => {
   return {
     type: FULFILLED,
-    teams: response
+    response
   };
 };
 

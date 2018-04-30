@@ -4,12 +4,14 @@ import Link from './components/link/Link';
 import Button from './components/button/Button';
 import Header from './components/header/Header';
 import TeamPanel from './components/teams/TeamPanel';
+import Filters from './components/filters/Filters';
 
 class App extends Component {
   render() {
     return (
       <div>
         <Header/>
+        <Filters/>
         <TeamPanel/>
         <div className={styles.App}>
           <h6>header 6</h6>

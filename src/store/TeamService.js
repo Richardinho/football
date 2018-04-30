@@ -1,11 +1,21 @@
 export default class TeamService {
   getTeams(criteria) {
-    console.log('criteria', criteria);
-    return Promise.resolve([
-      'Celtic',
-      'Aberdeen',
-      'Kilmarnock',
-      'Motherwell'
-    ]); 
+    return Promise.resolve({
+      criteria: [
+        {
+          displayName: 'country',
+          items: [
+            { key: 'scotland', selected: true, displayName: 'Scotland', results: 3 },
+            { key: 'england', selected: false,displayName: 'England', results: 2 }
+          ]
+        }
+      ],   
+      results: [
+        'Celtic',
+        'Aberdeen',
+        'Kilmarnock',
+        'Motherwell'
+      ]
+    }); 
   }
 }
