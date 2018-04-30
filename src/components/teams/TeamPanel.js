@@ -5,8 +5,14 @@ import { fetchTeamsAction } from '../../store/teams';
 
 class TeamPanel extends Component {
   componentDidMount() {
-    this.props.fetchTeams(); 
+    const criteria = { itemNumber: 5 };
+    console.log('component did mount');
+    this.props.fetchTeams(criteria); 
   }  
+
+  componentDidUpdate() {
+    console.log('component did update'); 
+  }
 
   render() {
 
@@ -30,7 +36,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchTeams: () => { dispatch(fetchTeamsAction());} 
+    fetchTeams: (criteria) => { dispatch(fetchTeamsAction(criteria));} 
   };
 };
 

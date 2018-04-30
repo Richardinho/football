@@ -1,5 +1,6 @@
 export default class TeamService {
-  getTeams() {
+  getTeams(criteria) {
+    console.log('criteria', criteria);
     return Promise.resolve([
       'Celtic',
       'Aberdeen',

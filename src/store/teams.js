@@ -15,9 +15,10 @@ const teamsReducer =  (state = ['aberdeen', 'celtic'], action) => {
   }
 };
 
-const fetchTeamsAction = () => {
+const fetchTeamsAction = (criteria) => {
   return {
-    type: FETCH_TEAMS 
+    type: FETCH_TEAMS,
+    criteria
   };
 }; 
 
@@ -31,7 +32,7 @@ const fetchTeamsFulfilledAction = (response) => {
 const fetchTeamsEpic = action$ =>
   action$.ofType(FETCH_TEAMS)
     .switchMap(action =>
-      Rx.Observable.fromPromise(teamService.getTeams())
+      Rx.Observable.fromPromise(teamService.getTeams(action.criteria))
         .map(response => fetchTeamsFulfilledAction(response))
 
     );
