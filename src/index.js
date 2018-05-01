@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { applyMiddleware, createStore, combineReducers } from 'redux'
-import { createEpicMiddleware } from 'redux-observable';
+import { combineEpics, createEpicMiddleware } from 'redux-observable';
 
 import registerServiceWorker from './registerServiceWorker';
 import headerReducer from './store/header';
@@ -13,14 +13,15 @@ import App from './App';
 import 'reset-css';
 import './styles/headers.css';
 import './index.module.css';
+import { updateCriteriaEpic } from './store/criteria';
 
 const reducer = combineReducers({
   header: headerReducer,
   teams: teamsReducer,
   criteria: criteriaReducer,
 });
-
-const epicMiddleware = createEpicMiddleware(fetchTeamsEpic);
+const rootEpic = combineEpics(fetchTeamsEpic, updateCriteriaEpic);
+const epicMiddleware = createEpicMiddleware(rootEpic);
 
 const initialState = { teams: ['Liverpool', 'Arsenal']};
 
