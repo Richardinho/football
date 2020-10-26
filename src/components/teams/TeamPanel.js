@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import styles from './styles.module.css';
+import styles from './styles.module.scss';
 import { fetchTeamsAction } from '../../store/teams';
 
 class TeamPanel extends Component {

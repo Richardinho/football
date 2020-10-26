@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import styles from './App.module.css';
-import Header from './components/header/Header';
+import styles from './App.module.scss';
 import TeamPanel from './components/teams/TeamPanel';
 import Filters from './components/filters/Filters';
 

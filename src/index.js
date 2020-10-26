@@ -11,8 +11,8 @@ import { criteriaReducer } from './store/criteria';
 import App from './App';
 
 import 'reset-css';
-import './styles/headers.css';
-import './index.module.css';
+import './styles/headers.scss';
+import './index.module.scss';
 import { updateCriteriaEpic } from './store/criteria';
 
 const reducer = combineReducers({
