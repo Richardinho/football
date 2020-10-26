@@ -6,22 +6,17 @@ import { fetchTeamsAction } from '../../store/teams';
 class TeamPanel extends Component {
   componentDidMount() {
     const criteria = { itemNumber: 5 };
-    console.log('component did mount');
     this.props.fetchTeams(criteria); 
   }  
 
-  componentDidUpdate() {
-    console.log('component did update'); 
-  }
-
   render() {
 
-    const renderTeam = (team, index) => (
-      <div key={index} className={styles.team}>{team}</div> 
+    const renderTeam = (team) => (
+      <div key={team.key} className={styles.team}>{team.name}</div> 
     );
 
     return (
-      <div>
+      <div className={styles.container}>
         { this.props.teams.map(renderTeam) } 
       </div> 
     ); 
@@ -29,8 +24,14 @@ class TeamPanel extends Component {
 }
 
 const mapStateToProps = (state) => {
+  const selectedCountries = state.criteria.items
+    .filter(item => item.selected)
+    .map(item => item.key);
+
   return {
-    teams: state.teams 
+    teams: state.teams.filter(team => {
+      return selectedCountries.includes(team.country);
+    }), 
   };
 };
 

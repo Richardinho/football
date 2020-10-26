@@ -1,20 +1,19 @@
 export default class TeamService {
   getTeams(criteria) {
     return Promise.resolve({
-      criteria: [
-        {
-          displayName: 'country',
-          items: [
-            { key: 'scotland', selected: true, displayName: 'Scotland', results: 3 },
-            { key: 'england', selected: false,displayName: 'England', results: 2 }
-          ]
-        }
-      ],   
+      criteria: {
+        items: [
+          { key: 'scotland', selected: true, displayName: 'Scotland',},
+          { key: 'england', selected: false, displayName: 'England', },
+          { key: 'germany', selected: false, displayName: 'Germany', },
+
+        ]
+      },   
       results: [
-        'Celtic',
-        'Aberdeen',
-        'Kilmarnock',
-        'Motherwell'
+        {key: 'celtic', name: 'Celtic', country: 'scotland'},
+        {key: 'aberdeen', name: 'Aberdeen', country: 'scotland'},
+        {key: 'arsenal', name: 'Arsenal', country: 'england'},
+        {key: 'bayern-munich', name: 'Bayern Munich', country: 'germany'},
       ]
     }); 
   }

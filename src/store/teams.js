@@ -33,7 +33,7 @@ const fetchTeamsEpic = action$ =>
   action$.ofType(FETCH_TEAMS)
     .switchMap(action =>
       Rx.Observable.fromPromise(teamService.getTeams(action.criteria))
-        .map(response => fetchTeamsFulfilledAction(response))
+      .map(response => fetchTeamsFulfilledAction(response))
 
     );
 

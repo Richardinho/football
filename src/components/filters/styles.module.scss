@@ -1,12 +1,22 @@
 .filters {
   background: lightblue;
   padding: 1rem;
-  width: 30%;
+  width: 30vw;
 }
+
 .filter {
 }
+
 .item {
+  display: flex;
+  align-items: center;
   padding: 1rem;
-  background: orange;
   margin-bottom: 0.5em;
+}
+
+.name {
+}
+
+.resultsNumber {
+  padding: 1rem;
 }

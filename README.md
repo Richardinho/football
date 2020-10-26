@@ -5,7 +5,7 @@ A demo app using **CreateReactApp**
 
 ## Installation
 ```
-  npm i
+  npm install
   npm run build-css
   npm run start
 

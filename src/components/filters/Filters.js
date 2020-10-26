@@ -2,15 +2,14 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import styles from './styles.module.css';
 
-
-class FI extends Component {
+class FilterItem extends Component {
   constructor () {
     super();
     this.onChange = this.onChange.bind(this);
   }
 
   onChange(event) {
-    this.props.onFilterItemChange(this.props.filter, this.props.item, event.target.checked); 
+    this.props.onSelected(this.props.item.key, event.target.checked); 
   }
 
   render() {
@@ -20,43 +19,39 @@ class FI extends Component {
           checked={this.props.item.selected}
           onChange={this.onChange}
           type="checkbox"/>   
-        {this.props.item.displayName}
+        <div className={styles.name}>
+          {this.props.item.displayName}
+        </div>
       </div>
     );   
   }
-
-}
-const mapDispatchToProps = (dispatch) => {
-  return {
-    onFilterItemChange: (filter, item, selected) => {
-      dispatch({ type: 'FILTER_ITEM_CHANGED', filter, item: { ...item, selected } }); 
-    }
-  }
-};
-
-const FilterItem = connect(() => { return {}}, mapDispatchToProps)(FI);
-
-const renderItem = (filterIndex, item, index) => (
-  <FilterItem key={index} filter={filterIndex} item={Object.assign(item, { index }) }/>
-);
-
-const renderFilter = (filter, index) => {
-  return (
-    <div key={index}className={styles.filter}>
-      { filter.items.map(renderItem.bind(null, index)) } 
-    </div> 
-  );
 }
 
-const Filters = ({criteria}) => (
+
+const Filters = ({items, onSelected}) => (
   <div className={styles.filters}>
-    {criteria.map(renderFilter)} 
+    { items.map((item) => {
+      return <FilterItem key={item.key} item={item} onSelected={onSelected}/>
+    }) } 
   </div>
 );
 
 const mapStateToProps = (state) => {
   return {
-    criteria: state.criteria 
+    items: state.criteria.items 
   };
 };
-export default connect(mapStateToProps)(Filters);
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onSelected: (key, selected) => {
+      dispatch({
+        type: 'FILTER_ITEM_CHANGED',
+        key,
+        selected,
+      }); 
+    }
+  }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Filters);

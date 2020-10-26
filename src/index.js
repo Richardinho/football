@@ -20,6 +20,7 @@ const reducer = combineReducers({
   teams: teamsReducer,
   criteria: criteriaReducer,
 });
+
 const rootEpic = combineEpics(fetchTeamsEpic, updateCriteriaEpic);
 const epicMiddleware = createEpicMiddleware(rootEpic);
 
