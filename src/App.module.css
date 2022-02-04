@@ -1,0 +1,21 @@
+
+.container {
+  background: firebrick;
+  min-height: 100vh;
+  display: flex;
+}
+
+.sideBar {
+  border: solid 3px red;
+}
+
+.main {
+  background: red;
+  width: 100%;
+  border: solid 4px blue;
+}
+
+.buttonsList > li  {
+  padding: 2em;
+  display: inline-block;
+}
