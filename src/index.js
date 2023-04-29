@@ -1,30 +1,20 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
+import React from "react";
+import { Provider } from "react-redux";
+import { createRoot } from "react-dom/client";
 
-import {
-	applyMiddleware,
-	combineReducers,
-	createStore,
-} from 'redux'
+import { applyMiddleware, combineReducers, createStore } from "redux";
 
-import {
-	combineEpics,
-	createEpicMiddleware,
-} from 'redux-observable';
+import { combineEpics, createEpicMiddleware } from "redux-observable";
 
-import registerServiceWorker from './registerServiceWorker';
-import {
-	teamsReducer,
-	fetchTeamsEpic,
-} from './store/teams';
+import registerServiceWorker from "./registerServiceWorker";
+import { teamsReducer, fetchTeamsEpic } from "./store/teams";
 
-import { criteriaReducer } from './store/criteria';
-import App from './App';
-import { updateCriteriaEpic } from './store/criteria';
+import { criteriaReducer } from "./store/criteria";
+import App from "./App";
+import { updateCriteriaEpic } from "./store/criteria";
 
-import 'reset-css';
-import './index.module.css';
+import "reset-css";
+import "./index.module.css";
 
 const reducer = combineReducers({
   teams: teamsReducer,
@@ -41,14 +31,21 @@ const initialState = {
   teams: [],
 };
 
-const store = createStore(reducer, initialState, applyMiddleware(epicMiddleware)); 
+const store = createStore(
+  reducer,
+  initialState,
+  applyMiddleware(epicMiddleware)
+);
 
 epicMiddleware.run(rootEpic);
 
-ReactDOM.render(
+const domNode = document.getElementById("root");
+const root = createRoot(domNode);
+
+root.render(
   <Provider store={store}>
     <App />
   </Provider>
-  , document.getElementById('root'));
+);
 
 registerServiceWorker();
