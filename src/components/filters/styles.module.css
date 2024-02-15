@@ -1,10 +1,7 @@
 .filters {
-  background: lightblue;
+  background: #ddd;
   padding: 1rem;
   width: 30vw;
-}
-
-.filter {
 }
 
 .item {
@@ -12,9 +9,6 @@
   align-items: center;
   padding: 1rem;
   margin-bottom: 0.5em;
-}
-
-.name {
 }
 
 .resultsNumber {
