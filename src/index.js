@@ -34,7 +34,7 @@ const initialState = {
 const store = createStore(
   reducer,
   initialState,
-  applyMiddleware(epicMiddleware)
+  applyMiddleware(epicMiddleware),
 );
 
 epicMiddleware.run(rootEpic);
@@ -45,7 +45,7 @@ const root = createRoot(domNode);
 root.render(
   <Provider store={store}>
     <App />
-  </Provider>
+  </Provider>,
 );
 
 registerServiceWorker();

@@ -1,14 +1,14 @@
-import TeamService from './TeamService';
-import { from } from 'rxjs';
-import { map, switchMap } from 'rxjs/operators';
-import { ofType } from 'redux-observable';
+import TeamService from "./TeamService";
+import { from } from "rxjs";
+import { map, switchMap } from "rxjs/operators";
+import { ofType } from "redux-observable";
 
-export const FETCH_TEAMS = 'fetch-teams';
-export const FULFILLED = 'fulfilled';
+export const FETCH_TEAMS = "fetch-teams";
+export const FULFILLED = "fulfilled";
 const teamService = new TeamService();
 
-export const teamsReducer =  (state = ['aberdeen', 'celtic'], action) => {
-  switch(action.type) {
+export const teamsReducer = (state = ["aberdeen", "celtic"], action) => {
+  switch (action.type) {
     case FETCH_TEAMS:
       return state;
     case FULFILLED:
@@ -21,27 +21,24 @@ export const teamsReducer =  (state = ['aberdeen', 'celtic'], action) => {
 export const fetchTeamsAction = (criteria) => {
   return {
     type: FETCH_TEAMS,
-    criteria
+    criteria,
   };
-}; 
+};
 
 const fetchTeamsFulfilledAction = (response) => {
   return {
     type: FULFILLED,
-    response
+    response,
   };
 };
 
-export const fetchTeamsEpic = action$ => {
-
-	return action$.pipe(
-		ofType(FETCH_TEAMS),
-		switchMap((action) => {
-			return from(teamService.getTeams(action.criteria)).pipe(
-				map(response => fetchTeamsFulfilledAction(response))
-			);
-		}),
-	);
+export const fetchTeamsEpic = (action$) => {
+  return action$.pipe(
+    ofType(FETCH_TEAMS),
+    switchMap((action) => {
+      return from(teamService.getTeams(action.criteria)).pipe(
+        map((response) => fetchTeamsFulfilledAction(response)),
+      );
+    }),
+  );
 };
-
-
